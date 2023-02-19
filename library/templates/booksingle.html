@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% extends 'libindex.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-lg-6 mb-5 ftco-animate">
+    				<a href="#" class="image-popup"><img src="{{ data1.Image.url }}" class="img-fluid" alt="Colorlib Template"></a>
+    			</div>
+    			<div class="col-lg-6 product-details pl-md-5 ftco-animate">
+    				<h3>{{data1.Bookname}}</h3>
+
+					<span><h5>Author : {{data1.Authorname}}</h5></span>
+    				<p><h5>Genre : {{data1.Description}}</h5>
+						</p>
+					<p  class="price"><h5>Rs.{{data1.Priceperday}}/day</h5></p>
+					<input type="hidden" id="price" value="{{data1.Priceperday}}">
+					<p>
+						{{data1.Synopsis}}
+					</p>
+					<p>Number of days borrowing:</p>
+					<input type="number" min="1" max="7" name="days" id="days" required><br><br>
+					<p>Total Price:</p>
+					<input type="number" name="totalprice" id="totalprice" required><br>
+					<br>
+					<form>
+
+          	<p><a href="{% url 'userreg' %}" class="btn btn-black py-3 px-5">BORROW</a></p></form>
+    			</div>
+    		</div>
+    	</div>
+    </section>
+<script type="text/javascript">
+	$(document).ready(function(){
+	$("#days").change(function(){
+	Days=document.getElementById("days").value;
+	Price=document.getElementById("price").value;
+	totalprice=Days*Price;
+	document.getElementById("totalprice").value=totalprice;
+	});
+	});
+</script>
+  </body>
+</html>
+{% endblock %}

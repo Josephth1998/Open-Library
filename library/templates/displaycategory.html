@@ -1,0 +1,51 @@
+<!doctype html>
+{% extends 'libindex.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <section class="ftco-section">
+    	<div class="container">
+				<div class="row justify-content-center mb-3 pb-3">
+          <div class="col-md-12 heading-section text-center ftco-animate">
+          	<span class="subheading"><h2>Our Books</h2></span>
+<!--            <h2 class="mb-4">Our Products</h2>-->
+            <p>“That's the thing about books. They let you travel without moving your feet.”</p>
+          </div>
+        </div>
+    	</div>
+    	<div class="container">
+    		<div class="row">
+				{% for d in book %}
+    			<div class="col-md-6 col-lg-3 ftco-animate">
+    				<div class="product">
+    					<a href="{% url 'booksinglefun' dataid=d.id %}" class="img-prod"><img class="img-fluid" src="{{ d.Image.url }}" alt="Colorlib Template">
+    						<span class="status"></span>
+    						<div class="overlay"></div>
+    					</a>
+    					<div class="text py-3 pb-4 px-3 text-center">
+    						<h3><a href="#">{{ d.Bookname }}</a></h3>
+    						<div class="d-flex">
+    							<div class="pricing">
+		    						    						<h3><a href="#">{{ d.Authorname }}</a></h3>
+
+		    					</div>
+	    					</div>
+
+    					</div>
+    				</div>
+    			</div>
+				{% endfor %}
+
+			</div>
+		</div>
+    </section>
+</body>
+</html>
+{% endblock %}
