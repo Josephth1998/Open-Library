@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body table-responsive p-0" style="    margin-left: 269px; margin-top:50px; margin-right:-100px;">
+                <table class="table table-hover text-nowrap" style="    width: 80vw;">
+                  <thead>
+                    <tr>
+                      <th>Book name</th>
+                        <th>Author name</th>
+                        <th>Genre</th>
+                        <th>Borrow charge</th>
+                        <th>Synopsis</th>
+                        <th>Image</th>
+                    </tr>
+                  </thead>
+                    <tbody>
+                    {% for d in data %}
+                    <tr>
+                        <td>{{d.Bookname}}</td>
+                        <td>{{d.Authorname}}</td>
+                        <td>{{d.Description}}</td>
+                        <td>{{d.Priceperday}}</td>
+                        <td>{{d.Synopsis}}</td>
+                        <td><img src="{{d.Image.url}}" style="height:50px;width:50px;"></td>
+                        <td>
+
+<!--                            Adding edit option-->
+
+                          <form action="{% url 'editbooks' dataid=d.id %}">
+                              <button type="submit" class="btn btn-block btn-info btn-sm">Edit</button>
+                          </form>
+                        </td>
+
+<!--                      Adding delete option-->
+                        <td>
+                            <form action="{% url 'deletebooks' dataid=d.id %}">
+                                <button type="submit" class="btn btn-block btn-info btn-sm">Delete</button>
+                            </form>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+              </div>
+
+</body>
+</html>
+{% endblock %}

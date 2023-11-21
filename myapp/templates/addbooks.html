@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="{% url 'savebooks' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="card-body" style="    margin-left: 269px; margin-top:50px;">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Name of the Book</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Book Name" name="bname">
+                  </div>
+                    <div class="form-group">
+                    <label for="exampleInputEmail1">Name of the Author</label>
+                    <input type="text" class="form-control" id="exampleInputEmail" placeholder="Author Name" name="aname">
+                  </div>
+                    <div class="form-group">
+                    <label for="exampleInputEmail1">Genre</label>
+                        <select name="genre">
+<!--                            <option>{{data.Description}}</option>-->
+                            {% for d in data %}
+                            <option>{{d.Genre}}</option>
+                            {% endfor %}
+
+                        </select>
+<!--                    <input type="text" class="form-control" id="exampleInputEmai1" placeholder="Enter Description" name="description">-->
+                  </div>
+
+                    <div class="form-group">
+                    <label for="exampleInputEmail1">Borrow charge per day</label>
+                    <input type="number" class="form-control" id="exampleInputEmai" placeholder="Borrow charge per day" name="priceperday">
+                  </div>
+                    <div class="form-group">
+                    <label for="exampleInputEmail1">Synopsis</label>
+                    <input type="text" class="form-control" id="exampleInputEma" placeholder="Synopsis" name="synopsis">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputFile">Add Image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" name="image" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <div class="input-group-append">
+                        <span class="input-group-text">Upload</span>
+                      </div>
+
+                    </div>
+
+                  </div>
+                    <div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+
+              </form>
+
+</body>
+</html>
+
+{% endblock %}
